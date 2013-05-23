@@ -1,0 +1,31 @@
+################################
+         Testing starts...      
+
+TEST CASE 1
+size: 10000
+My Cpp STL: TIME 0.01
+Offical Java STL: TIME 0.09
+
+TEST CASE 2
+size: 100000
+My Cpp STL: TIME 0.02
+Offical Java STL: TIME 0.11
+
+TEST CASE 3
+size: 1000000
+My Cpp STL: TIME 0.16
+Offical Java STL: TIME 0.18
+
+TEST CASE 4
+size: 10000000
+My Cpp STL: TIME 1.46
+Offical Java STL: TIME 1.10
+
+TEST CASE 5
+size: 100000000
+My Cpp STL: TIME 14.77
+Offical Java STL: TIME 40.58
+
+         All tests done.      
+################################
+

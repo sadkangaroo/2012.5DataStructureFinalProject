@@ -1,0 +1,45 @@
+\documentclass[a4paper,13pt]{report}
+%
+%--------------------   start of the 'preamble'
+%
+\usepackage{graphicx,amssymb,amstext,amsmath}
+\usepackage{adobe_fonts}
+\usepackage{report_title}
+\usepackage[table,usenames,dvipsnames,svgnames]{xcolor}
+
+%
+%%    homebrew commands -- to save typing
+\newcommand\etc{\textsl{etc}}
+\newcommand\eg{\textsl{eg.}\ }
+\newcommand\etal{\textsl{et al.}}
+\newcommand\Quote[1]{\lq\textsl{#1}\rq}
+\newcommand\fr[2]{{\textstyle\frac{#1}{#2}}}
+\newcommand\miktex{\textsl{MikTeX}}
+\newcommand\comp{\textsl{The Companion}}
+\newcommand\nss{\textsl{Not so Short}}
+%
+%---------------------   end of the 'preamble'
+%
+
+\renewcommand{\abstractname}{\LARGE{Abstract}}
+
+\begin{document}
+%-----------------------------------------------------------
+\Letsmaketitle
+%-----------------------------------------------------------
+\begin{abstract}\centering
+\vspace{3mm}
+利用C++模板功能实现部分的JAVA的STL的功能。在给定函数体框架的情况下补全每个函数体内容，最终需要实现ArrayList,LinkedList,\\HashSet,HashMap,TreeSet,TreeMap六个文件。
+\end{abstract}
+%-----------------------------------------------------------
+\tableofcontents
+%-----------------------------------------------------------
+\include{chap1}
+\include{chap2}
+\include{chap3}
+%-----------------------------------------------------------
+\appendix
+\include{app1}
+\include{app2}
+%-----------------------------------------------------------
+\end{document}

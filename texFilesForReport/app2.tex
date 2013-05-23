@@ -1,0 +1,151 @@
+\chapter{Testing Main Programs}
+
+每个Java与Cpp的主程序都从main参数读入数据规模N，然后运行。不执行IO。
+
+\section{MainArrayList}
+\subsection{MainArrayList.cpp}
+\noindent
+\mbox{}\textcolor{ForestGreen}{int}\ \textbf{\textcolor{Black}{main}}\textcolor{BrickRed}{(}\textcolor{ForestGreen}{int}\ argc\textcolor{BrickRed}{,}\ \textcolor{ForestGreen}{char}\ \textcolor{BrickRed}{**}argv\textcolor{BrickRed}{)}\ \textcolor{Red}{\{} \\
+\mbox{} \\
+\mbox{}\ \ \ \ \textcolor{ForestGreen}{int}\ N\ \textcolor{BrickRed}{=}\ \textbf{\textcolor{Black}{atoi}}\textcolor{BrickRed}{(}argv\textcolor{BrickRed}{[}\textcolor{Purple}{1}\textcolor{BrickRed}{]);} \\
+\mbox{}\ \ \ \ \textcolor{ForestGreen}{int}\ tot\ \textcolor{BrickRed}{=}\ N\ \textcolor{BrickRed}{/}\ \textcolor{Purple}{10}\textcolor{BrickRed}{;} \\
+\mbox{} \\
+\mbox{}\ \ \ \ \textcolor{TealBlue}{ArrayList\textless{}int\textgreater{}}\ arr\textcolor{BrickRed}{;} \\
+\mbox{}\ \ \ \ \textbf{\textcolor{Blue}{for}}\ \textcolor{BrickRed}{(}\textcolor{ForestGreen}{int}\ te\ \textcolor{BrickRed}{=}\ \textcolor{Purple}{0}\textcolor{BrickRed}{;}\ te\ \textcolor{BrickRed}{\textless{}}\ \textcolor{Purple}{10}\textcolor{BrickRed}{;}\ \textcolor{BrickRed}{++}te\textcolor{BrickRed}{)}\ \textcolor{Red}{\{} \\
+\mbox{}\ \ \ \ \ \ \ \ \textbf{\textcolor{Blue}{for}}\ \textcolor{BrickRed}{(}\textcolor{ForestGreen}{int}\ i\ \textcolor{BrickRed}{=}\ \textcolor{Purple}{1}\textcolor{BrickRed}{;}\ i\ \textcolor{BrickRed}{\textless{}=}\ tot\textcolor{BrickRed}{;}\ \textcolor{BrickRed}{++}i\textcolor{BrickRed}{)}\ arr\textcolor{BrickRed}{.}\textbf{\textcolor{Black}{add}}\textcolor{BrickRed}{(}i\textcolor{BrickRed}{);} \\
+\mbox{}\ \ \ \ \ \ \ \ \textbf{\textcolor{Blue}{for}}\ \textcolor{BrickRed}{(}\textcolor{ForestGreen}{int}\ i\ \textcolor{BrickRed}{=}\ \textcolor{Purple}{0}\textcolor{BrickRed}{;}\ i\ \textcolor{BrickRed}{\textless{}}\ arr\textcolor{BrickRed}{.}\textbf{\textcolor{Black}{size}}\textcolor{BrickRed}{();}\ \textcolor{BrickRed}{++}i\textcolor{BrickRed}{)}\ arr\textcolor{BrickRed}{.}\textbf{\textcolor{Black}{get}}\textcolor{BrickRed}{(}i\textcolor{BrickRed}{);} \\
+\mbox{}\ \ \ \ \ \ \ \ \textbf{\textcolor{Blue}{while}}\ \textcolor{BrickRed}{(!}arr\textcolor{BrickRed}{.}\textbf{\textcolor{Black}{isEmpty}}\textcolor{BrickRed}{())}\ arr\textcolor{BrickRed}{.}\textbf{\textcolor{Black}{removeIndex}}\textcolor{BrickRed}{(}arr\textcolor{BrickRed}{.}\textbf{\textcolor{Black}{size}}\textcolor{BrickRed}{()}\ \textcolor{BrickRed}{-}\ \textcolor{Purple}{1}\textcolor{BrickRed}{);} \\
+\mbox{}\ \ \ \ \textcolor{Red}{\}} \\
+\mbox{} \\
+\mbox{}\ \ \ \ \textbf{\textcolor{Blue}{return}}\ \textcolor{Purple}{0}\textcolor{BrickRed}{;} \\
+\mbox{} \\
+\mbox{}\textcolor{Red}{\}} \\
+\mbox{} \\
+\subsection{MainArrayList.java}
+\noindent
+\mbox{}\textbf{\textcolor{Blue}{public}}\ \textbf{\textcolor{Blue}{class}}\ \textcolor{TealBlue}{MainArrayList}\ \textcolor{Red}{\{} \\
+\mbox{}\ \ \ \ \textbf{\textcolor{Blue}{public}}\ \textbf{\textcolor{Blue}{static}}\ \textcolor{ForestGreen}{void}\ \textbf{\textcolor{Black}{main}}\textcolor{BrickRed}{(}\textcolor{TealBlue}{String}\ args\textcolor{BrickRed}{[])}\ \textcolor{Red}{\{} \\
+\mbox{}\ \ \ \ \ \ \ \  \\
+\mbox{}\ \ \ \ \ \ \ \ \textcolor{ForestGreen}{int}\ N\ \textcolor{BrickRed}{=}\ Integer\textcolor{BrickRed}{.}\textbf{\textcolor{Black}{parseInt}}\textcolor{BrickRed}{(}args\textcolor{BrickRed}{[}\textcolor{Purple}{0}\textcolor{BrickRed}{]);} \\
+\mbox{}\ \ \ \ \ \ \ \ \textcolor{ForestGreen}{int}\ tot\ \textcolor{BrickRed}{=}\ N\ \textcolor{BrickRed}{/}\ \textcolor{Purple}{10}\textcolor{BrickRed}{;} \\
+\mbox{} \\
+\mbox{}\ \ \ \ \ \ \ \ \textcolor{TealBlue}{ArrayList\textless{}Integer\textgreater{}}\ arr\ \textcolor{BrickRed}{=}\ \textbf{\textcolor{Blue}{new}}\ ArrayList\textcolor{BrickRed}{\textless{}}Integer\textcolor{BrickRed}{\textgreater{}();} \\
+\mbox{}\ \ \ \ \ \ \ \ \textbf{\textcolor{Blue}{for}}\ \textcolor{BrickRed}{(}\textcolor{ForestGreen}{int}\ te\ \textcolor{BrickRed}{=}\ \textcolor{Purple}{0}\textcolor{BrickRed}{;}\ te\ \textcolor{BrickRed}{\textless{}}\ \textcolor{Purple}{10}\textcolor{BrickRed}{;}\ \textcolor{BrickRed}{++}te\textcolor{BrickRed}{)}\ \textcolor{Red}{\{} \\
+\mbox{}\ \ \ \ \ \ \ \ \ \ \ \ \textbf{\textcolor{Blue}{for}}\ \textcolor{BrickRed}{(}\textcolor{ForestGreen}{int}\ i\ \textcolor{BrickRed}{=}\ \textcolor{Purple}{1}\textcolor{BrickRed}{;}\ i\ \textcolor{BrickRed}{\textless{}=}\ tot\textcolor{BrickRed}{;}\ \textcolor{BrickRed}{++}i\textcolor{BrickRed}{)}\ arr\textcolor{BrickRed}{.}\textbf{\textcolor{Black}{add}}\textcolor{BrickRed}{(}i\textcolor{BrickRed}{);} \\
+\mbox{}\ \ \ \ \ \ \ \ \ \ \ \ \textbf{\textcolor{Blue}{for}}\ \textcolor{BrickRed}{(}\textcolor{ForestGreen}{int}\ i\ \textcolor{BrickRed}{=}\ \textcolor{Purple}{0}\textcolor{BrickRed}{;}\ i\ \textcolor{BrickRed}{\textless{}}\ arr\textcolor{BrickRed}{.}\textbf{\textcolor{Black}{size}}\textcolor{BrickRed}{();}\ \textcolor{BrickRed}{++}i\textcolor{BrickRed}{)}\ arr\textcolor{BrickRed}{.}\textbf{\textcolor{Black}{get}}\textcolor{BrickRed}{(}i\textcolor{BrickRed}{);} \\
+\mbox{}\ \ \ \ \ \ \ \ \ \ \ \ \textbf{\textcolor{Blue}{while}}\ \textcolor{BrickRed}{(!}arr\textcolor{BrickRed}{.}\textbf{\textcolor{Black}{isEmpty}}\textcolor{BrickRed}{())}\ arr\textcolor{BrickRed}{.}\textbf{\textcolor{Black}{remove}}\textcolor{BrickRed}{(}arr\textcolor{BrickRed}{.}\textbf{\textcolor{Black}{size}}\textcolor{BrickRed}{()}\ \textcolor{BrickRed}{-}\ \textcolor{Purple}{1}\textcolor{BrickRed}{);} \\
+\mbox{}\ \ \ \ \ \ \ \ \textcolor{Red}{\}} \\
+\mbox{} \\
+\mbox{}\ \ \ \ \textcolor{Red}{\}} \\
+\mbox{}\textcolor{Red}{\}} \\
+\mbox{}
+
+\section{LinkedList}
+\subsection{LinkedList.cpp}
+\noindent
+\mbox{}\textcolor{ForestGreen}{int}\ \textbf{\textcolor{Black}{main}}\textcolor{BrickRed}{(}\textcolor{ForestGreen}{int}\ argc\textcolor{BrickRed}{,}\ \textcolor{ForestGreen}{char}\ \textcolor{BrickRed}{**}argv\textcolor{BrickRed}{)}\ \textcolor{Red}{\{} \\
+\mbox{} \\
+\mbox{}\ \ \ \ \textcolor{ForestGreen}{int}\ N\ \textcolor{BrickRed}{=}\ \textbf{\textcolor{Black}{atoi}}\textcolor{BrickRed}{(}argv\textcolor{BrickRed}{[}\textcolor{Purple}{1}\textcolor{BrickRed}{]);} \\
+\mbox{}\ \ \ \ \textcolor{ForestGreen}{int}\ tot\ \textcolor{BrickRed}{=}\ N\ \textcolor{BrickRed}{/}\ \textcolor{Purple}{10}\textcolor{BrickRed}{;} \\
+\mbox{} \\
+\mbox{}\ \ \ \ \textcolor{TealBlue}{LinkedList\textless{}int\textgreater{}}\ lnk\textcolor{BrickRed}{;} \\
+\mbox{}\ \ \ \ \textbf{\textcolor{Blue}{for}}\ \textcolor{BrickRed}{(}\textcolor{ForestGreen}{int}\ te\ \textcolor{BrickRed}{=}\ \textcolor{Purple}{0}\textcolor{BrickRed}{;}\ te\ \textcolor{BrickRed}{\textless{}}\ \textcolor{Purple}{10}\textcolor{BrickRed}{;}\ \textcolor{BrickRed}{++}te\textcolor{BrickRed}{)}\ \textcolor{Red}{\{} \\
+\mbox{}\ \ \ \ \ \ \ \ \textbf{\textcolor{Blue}{for}}\ \textcolor{BrickRed}{(}\textcolor{ForestGreen}{int}\ i\ \textcolor{BrickRed}{=}\ \textcolor{Purple}{1}\textcolor{BrickRed}{;}\ i\ \textcolor{BrickRed}{\textless{}=}\ tot\textcolor{BrickRed}{;}\ \textcolor{BrickRed}{++}i\textcolor{BrickRed}{)}\ lnk\textcolor{BrickRed}{.}\textbf{\textcolor{Black}{add}}\textcolor{BrickRed}{(}i\textcolor{BrickRed}{);} \\
+\mbox{}\ \ \ \ \ \ \ \ \textbf{\textcolor{Blue}{while}}\ \textcolor{BrickRed}{(!}lnk\textcolor{BrickRed}{.}\textbf{\textcolor{Black}{isEmpty}}\textcolor{BrickRed}{())}\ lnk\textcolor{BrickRed}{.}\textbf{\textcolor{Black}{removeLast}}\textcolor{BrickRed}{();} \\
+\mbox{}\ \ \ \ \textcolor{Red}{\}} \\
+\mbox{} \\
+\mbox{}\ \ \ \ \textbf{\textcolor{Blue}{return}}\ \textcolor{Purple}{0}\textcolor{BrickRed}{;} \\
+\mbox{} \\
+\mbox{}\textcolor{Red}{\}} \\
+\mbox{}
+
+\subsection{LinkedList.java}
+\noindent
+\mbox{}\textbf{\textcolor{Blue}{public}}\ \textbf{\textcolor{Blue}{class}}\ \textcolor{TealBlue}{MainLinkedList}\ \textcolor{Red}{\{} \\
+\mbox{}\ \ \ \ \textbf{\textcolor{Blue}{public}}\ \textbf{\textcolor{Blue}{static}}\ \textcolor{ForestGreen}{void}\ \textbf{\textcolor{Black}{main}}\textcolor{BrickRed}{(}\textcolor{TealBlue}{String}\ args\textcolor{BrickRed}{[])}\ \textcolor{Red}{\{} \\
+\mbox{}\ \ \ \ \ \ \ \  \\
+\mbox{}\ \ \ \ \ \ \ \ \textcolor{ForestGreen}{int}\ N\ \textcolor{BrickRed}{=}\ Integer\textcolor{BrickRed}{.}\textbf{\textcolor{Black}{parseInt}}\textcolor{BrickRed}{(}args\textcolor{BrickRed}{[}\textcolor{Purple}{0}\textcolor{BrickRed}{]);} \\
+\mbox{}\ \ \ \ \ \ \ \ \textcolor{ForestGreen}{int}\ tot\ \textcolor{BrickRed}{=}\ N\ \textcolor{BrickRed}{/}\ \textcolor{Purple}{10}\textcolor{BrickRed}{;} \\
+\mbox{} \\
+\mbox{}\ \ \ \ \ \ \ \ \textcolor{TealBlue}{LinkedList\textless{}Integer\textgreater{}}\ lnk\ \textcolor{BrickRed}{=}\ \textbf{\textcolor{Blue}{new}}\ LinkedList\textcolor{BrickRed}{\textless{}}Integer\textcolor{BrickRed}{\textgreater{}();} \\
+\mbox{}\ \ \ \ \ \ \ \ \textbf{\textcolor{Blue}{for}}\ \textcolor{BrickRed}{(}\textcolor{ForestGreen}{int}\ te\ \textcolor{BrickRed}{=}\ \textcolor{Purple}{0}\textcolor{BrickRed}{;}\ te\ \textcolor{BrickRed}{\textless{}}\ \textcolor{Purple}{10}\textcolor{BrickRed}{;}\ \textcolor{BrickRed}{++}te\textcolor{BrickRed}{)}\ \textcolor{Red}{\{} \\
+\mbox{}\ \ \ \ \ \ \ \ \ \ \ \ \textbf{\textcolor{Blue}{for}}\ \textcolor{BrickRed}{(}\textcolor{ForestGreen}{int}\ i\ \textcolor{BrickRed}{=}\ \textcolor{Purple}{1}\textcolor{BrickRed}{;}\ i\ \textcolor{BrickRed}{\textless{}=}\ tot\textcolor{BrickRed}{;}\ \textcolor{BrickRed}{++}i\textcolor{BrickRed}{)}\ lnk\textcolor{BrickRed}{.}\textbf{\textcolor{Black}{add}}\textcolor{BrickRed}{(}i\textcolor{BrickRed}{);} \\
+\mbox{}\ \ \ \ \ \ \ \ \ \ \ \ \textbf{\textcolor{Blue}{while}}\ \textcolor{BrickRed}{(!}lnk\textcolor{BrickRed}{.}\textbf{\textcolor{Black}{isEmpty}}\textcolor{BrickRed}{())}\ lnk\textcolor{BrickRed}{.}\textbf{\textcolor{Black}{removeLast}}\textcolor{BrickRed}{();} \\
+\mbox{}\ \ \ \ \ \ \ \ \textcolor{Red}{\}} \\
+\mbox{}\ \ \ \ \textcolor{Red}{\}} \\
+\mbox{}\textcolor{Red}{\}} \\
+\mbox{}
+
+\section{HashSet}
+\subsection{HashSet.cpp}
+\noindent
+\mbox{}\textcolor{ForestGreen}{int}\ \textbf{\textcolor{Black}{main}}\textcolor{BrickRed}{(}\textcolor{ForestGreen}{int}\ argc\textcolor{BrickRed}{,}\ \textcolor{ForestGreen}{char}\ \textcolor{BrickRed}{**}argv\textcolor{BrickRed}{)}\ \textcolor{Red}{\{} \\
+\mbox{} \\
+\mbox{}\ \ \ \ \textcolor{ForestGreen}{int}\ N\ \textcolor{BrickRed}{=}\ \textbf{\textcolor{Black}{atoi}}\textcolor{BrickRed}{(}argv\textcolor{BrickRed}{[}\textcolor{Purple}{1}\textcolor{BrickRed}{]);} \\
+\mbox{}\ \ \ \ \textcolor{ForestGreen}{int}\ tot\ \textcolor{BrickRed}{=}\ N\ \textcolor{BrickRed}{/}\ \textcolor{Purple}{10}\textcolor{BrickRed}{;} \\
+\mbox{} \\
+\mbox{}\ \ \ \ \textcolor{TealBlue}{HashSet\textless{}int,\ Hashint\textgreater{}}\ set\textcolor{BrickRed}{;} \\
+\mbox{}\ \ \ \ \textbf{\textcolor{Blue}{for}}\ \textcolor{BrickRed}{(}\textcolor{ForestGreen}{int}\ te\ \textcolor{BrickRed}{=}\ \textcolor{Purple}{0}\textcolor{BrickRed}{;}\ te\ \textcolor{BrickRed}{\textless{}}\ \textcolor{Purple}{10}\textcolor{BrickRed}{;}\ \textcolor{BrickRed}{++}te\textcolor{BrickRed}{)}\ \textcolor{Red}{\{} \\
+\mbox{}\ \ \ \ \ \ \ \ \textbf{\textcolor{Blue}{for}}\ \textcolor{BrickRed}{(}\textcolor{ForestGreen}{int}\ i\ \textcolor{BrickRed}{=}\ \textcolor{Purple}{1}\textcolor{BrickRed}{;}\ i\ \textcolor{BrickRed}{\textless{}=}\ tot\textcolor{BrickRed}{;}\ \textcolor{BrickRed}{++}i\textcolor{BrickRed}{)}\ set\textcolor{BrickRed}{.}\textbf{\textcolor{Black}{add}}\textcolor{BrickRed}{(}i\textcolor{BrickRed}{);} \\
+\mbox{}\ \ \ \ \ \ \ \ \textbf{\textcolor{Blue}{for}}\ \textcolor{BrickRed}{(}\textcolor{ForestGreen}{int}\ i\ \textcolor{BrickRed}{=}\ \textcolor{Purple}{1}\textcolor{BrickRed}{;}\ i\ \textcolor{BrickRed}{\textless{}=}\ tot\textcolor{BrickRed}{;}\ \textcolor{BrickRed}{++}i\textcolor{BrickRed}{)}\ set\textcolor{BrickRed}{.}\textbf{\textcolor{Black}{remove}}\textcolor{BrickRed}{(}i\textcolor{BrickRed}{);} \\
+\mbox{}\ \ \ \ \textcolor{Red}{\}} \\
+\mbox{} \\
+\mbox{}\ \ \ \ \textbf{\textcolor{Blue}{return}}\ \textcolor{Purple}{0}\textcolor{BrickRed}{;} \\
+\mbox{} \\
+\mbox{}\textcolor{Red}{\}} \\
+\mbox{}
+\subsection{HashSet.java}
+\noindent
+\mbox{}\textbf{\textcolor{Blue}{public}}\ \textbf{\textcolor{Blue}{class}}\ \textcolor{TealBlue}{MainHashSet}\ \textcolor{Red}{\{} \\
+\mbox{}\ \ \ \ \textbf{\textcolor{Blue}{public}}\ \textbf{\textcolor{Blue}{static}}\ \textcolor{ForestGreen}{void}\ \textbf{\textcolor{Black}{main}}\textcolor{BrickRed}{(}\textcolor{TealBlue}{String}\ args\textcolor{BrickRed}{[])}\ \textcolor{Red}{\{} \\
+\mbox{}\ \ \ \ \ \ \ \  \\
+\mbox{}\ \ \ \ \ \ \ \ \textcolor{ForestGreen}{int}\ N\ \textcolor{BrickRed}{=}\ Integer\textcolor{BrickRed}{.}\textbf{\textcolor{Black}{parseInt}}\textcolor{BrickRed}{(}args\textcolor{BrickRed}{[}\textcolor{Purple}{0}\textcolor{BrickRed}{]);} \\
+\mbox{}\ \ \ \ \ \ \ \ \textcolor{ForestGreen}{int}\ tot\ \textcolor{BrickRed}{=}\ N\ \textcolor{BrickRed}{/}\ \textcolor{Purple}{10}\textcolor{BrickRed}{;} \\
+\mbox{} \\
+\mbox{}\ \ \ \ \ \ \ \ \textcolor{TealBlue}{HashSet\textless{}Integer\textgreater{}}\ set\ \textcolor{BrickRed}{=}\ \textbf{\textcolor{Blue}{new}}\ HashSet\textcolor{BrickRed}{\textless{}}Integer\textcolor{BrickRed}{\textgreater{}();} \\
+\mbox{}\ \ \ \ \ \ \ \ \textbf{\textcolor{Blue}{for}}\ \textcolor{BrickRed}{(}\textcolor{ForestGreen}{int}\ te\ \textcolor{BrickRed}{=}\ \textcolor{Purple}{0}\textcolor{BrickRed}{;}\ te\ \textcolor{BrickRed}{\textless{}}\ \textcolor{Purple}{10}\textcolor{BrickRed}{;}\ \textcolor{BrickRed}{++}te\textcolor{BrickRed}{)}\ \textcolor{Red}{\{} \\
+\mbox{}\ \ \ \ \ \ \ \ \ \ \ \ \textbf{\textcolor{Blue}{for}}\ \textcolor{BrickRed}{(}\textcolor{ForestGreen}{int}\ i\ \textcolor{BrickRed}{=}\ \textcolor{Purple}{1}\textcolor{BrickRed}{;}\ i\ \textcolor{BrickRed}{\textless{}=}\ tot\textcolor{BrickRed}{;}\ \textcolor{BrickRed}{++}i\textcolor{BrickRed}{)}\ set\textcolor{BrickRed}{.}\textbf{\textcolor{Black}{add}}\textcolor{BrickRed}{(}i\textcolor{BrickRed}{);} \\
+\mbox{}\ \ \ \ \ \ \ \ \ \ \ \ \textbf{\textcolor{Blue}{for}}\ \textcolor{BrickRed}{(}\textcolor{ForestGreen}{int}\ i\ \textcolor{BrickRed}{=}\ \textcolor{Purple}{1}\textcolor{BrickRed}{;}\ i\ \textcolor{BrickRed}{\textless{}=}\ tot\textcolor{BrickRed}{;}\ \textcolor{BrickRed}{++}i\textcolor{BrickRed}{)}\ set\textcolor{BrickRed}{.}\textbf{\textcolor{Black}{remove}}\textcolor{BrickRed}{(}i\textcolor{BrickRed}{);} \\
+\mbox{}\ \ \ \ \ \ \ \ \textcolor{Red}{\}} \\
+\mbox{} \\
+\mbox{}\ \ \ \ \textcolor{Red}{\}} \\
+\mbox{}\textcolor{Red}{\}} \\
+\mbox{}
+
+\section{TreeSet}
+\subsection{TreeSet.cpp}
+\noindent
+\mbox{}\textcolor{ForestGreen}{int}\ \textbf{\textcolor{Black}{main}}\textcolor{BrickRed}{(}\textcolor{ForestGreen}{int}\ argc\textcolor{BrickRed}{,}\ \textcolor{ForestGreen}{char}\ \textcolor{BrickRed}{**}argv\textcolor{BrickRed}{)}\ \textcolor{Red}{\{} \\
+\mbox{} \\
+\mbox{}\ \ \ \ \textcolor{ForestGreen}{int}\ N\ \textcolor{BrickRed}{=}\ \textbf{\textcolor{Black}{atoi}}\textcolor{BrickRed}{(}argv\textcolor{BrickRed}{[}\textcolor{Purple}{1}\textcolor{BrickRed}{]);} \\
+\mbox{}\ \ \ \ \textcolor{ForestGreen}{int}\ tot\ \textcolor{BrickRed}{=}\ N\ \textcolor{BrickRed}{/}\ \textcolor{Purple}{10}\textcolor{BrickRed}{;} \\
+\mbox{} \\
+\mbox{}\ \ \ \ \textbf{\textcolor{Black}{srand}}\textcolor{BrickRed}{(}\textbf{\textcolor{Black}{time}}\textcolor{BrickRed}{(}NULL\textcolor{BrickRed}{));} \\
+\mbox{}\ \ \ \ \textcolor{TealBlue}{TreeSet\textless{}int\textgreater{}}\ tree\textcolor{BrickRed}{;} \\
+\mbox{}\ \ \ \ \textbf{\textcolor{Blue}{for}}\ \textcolor{BrickRed}{(}\textcolor{ForestGreen}{int}\ te\ \textcolor{BrickRed}{=}\ \textcolor{Purple}{0}\textcolor{BrickRed}{;}\ te\ \textcolor{BrickRed}{\textless{}}\ \textcolor{Purple}{10}\textcolor{BrickRed}{;}\ \textcolor{BrickRed}{++}te\textcolor{BrickRed}{)}\ \textcolor{Red}{\{} \\
+\mbox{}\ \ \ \ \ \ \ \ \textbf{\textcolor{Blue}{for}}\ \textcolor{BrickRed}{(}\textcolor{ForestGreen}{int}\ i\ \textcolor{BrickRed}{=}\ \textcolor{Purple}{1}\textcolor{BrickRed}{;}\ i\ \textcolor{BrickRed}{\textless{}=}\ tot\textcolor{BrickRed}{;}\ \textcolor{BrickRed}{++}i\textcolor{BrickRed}{)}\ tree\textcolor{BrickRed}{.}\textbf{\textcolor{Black}{add}}\textcolor{BrickRed}{(}\textbf{\textcolor{Black}{rand}}\textcolor{BrickRed}{());} \\
+\mbox{}\ \ \ \ \textcolor{Red}{\}} \\
+\mbox{} \\
+\mbox{}\ \ \ \ \textbf{\textcolor{Blue}{return}}\ \textcolor{Purple}{0}\textcolor{BrickRed}{;} \\
+\mbox{} \\
+\mbox{}\textcolor{Red}{\}} \\
+\mbox{}
+
+\subsection{TreeSet.java}
+\noindent
+\mbox{}\textbf{\textcolor{Blue}{public}}\ \textbf{\textcolor{Blue}{class}}\ \textcolor{TealBlue}{MainTreeSet}\ \textcolor{Red}{\{} \\
+\mbox{}\ \ \ \ \textbf{\textcolor{Blue}{public}}\ \textbf{\textcolor{Blue}{static}}\ \textcolor{ForestGreen}{void}\ \textbf{\textcolor{Black}{main}}\textcolor{BrickRed}{(}\textcolor{TealBlue}{String}\ args\textcolor{BrickRed}{[])}\ \textcolor{Red}{\{} \\
+\mbox{}\ \ \ \ \ \ \ \  \\
+\mbox{}\ \ \ \ \ \ \ \ \textcolor{ForestGreen}{int}\ N\ \textcolor{BrickRed}{=}\ Integer\textcolor{BrickRed}{.}\textbf{\textcolor{Black}{parseInt}}\textcolor{BrickRed}{(}args\textcolor{BrickRed}{[}\textcolor{Purple}{0}\textcolor{BrickRed}{]);} \\
+\mbox{}\ \ \ \ \ \ \ \ \textcolor{ForestGreen}{int}\ tot\ \textcolor{BrickRed}{=}\ N\ \textcolor{BrickRed}{/}\ \textcolor{Purple}{10}\textcolor{BrickRed}{;} \\
+\mbox{} \\
+\mbox{}\ \ \ \ \ \ \ \ \textcolor{TealBlue}{Random}\ random\ \textcolor{BrickRed}{=}\ \textbf{\textcolor{Blue}{new}}\ \textbf{\textcolor{Black}{Random}}\textcolor{BrickRed}{();} \\
+\mbox{}\ \ \ \ \ \ \ \ \textcolor{TealBlue}{TreeSet\textless{}Integer\textgreater{}}\ tree\ \textcolor{BrickRed}{=}\ \textbf{\textcolor{Blue}{new}}\ TreeSet\textcolor{BrickRed}{\textless{}}Integer\textcolor{BrickRed}{\textgreater{}();} \\
+\mbox{}\ \ \ \ \ \ \ \ \textbf{\textcolor{Blue}{for}}\ \textcolor{BrickRed}{(}\textcolor{ForestGreen}{int}\ te\ \textcolor{BrickRed}{=}\ \textcolor{Purple}{0}\textcolor{BrickRed}{;}\ te\ \textcolor{BrickRed}{\textless{}}\ \textcolor{Purple}{10}\textcolor{BrickRed}{;}\ \textcolor{BrickRed}{++}te\textcolor{BrickRed}{)}\ \textcolor{Red}{\{} \\
+\mbox{}\ \ \ \ \ \ \ \ \ \ \ \ \textbf{\textcolor{Blue}{for}}\ \textcolor{BrickRed}{(}\textcolor{ForestGreen}{int}\ i\ \textcolor{BrickRed}{=}\ \textcolor{Purple}{1}\textcolor{BrickRed}{;}\ i\ \textcolor{BrickRed}{\textless{}=}\ tot\textcolor{BrickRed}{;}\ \textcolor{BrickRed}{++}i\textcolor{BrickRed}{)}\ tree\textcolor{BrickRed}{.}\textbf{\textcolor{Black}{add}}\textcolor{BrickRed}{(}random\textcolor{BrickRed}{.}\textbf{\textcolor{Black}{nextInt}}\textcolor{BrickRed}{());} \\
+\mbox{}\ \ \ \ \ \ \ \ \textcolor{Red}{\}} \\
+\mbox{} \\
+\mbox{}\ \ \ \ \textcolor{Red}{\}} \\
+\mbox{}\textcolor{Red}{\}} \\
+\mbox{}
+

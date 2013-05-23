@@ -1,0 +1,36 @@
+\chapter{Testing Scripts}
+该脚本是用bash编写的，每次读取当前要测试的主程序名（如MainArrayList)，初始数据规模（如10000），最大数据规模(如100000000），脚本对于每个数据规模分别运行Cpp与Java的主程序，输出运行时间。
+\par
+\vspace{4mm}
+\noindent
+\mbox{}\textit{\textcolor{Brown}{\#!/bin/bash}} \\
+\mbox{} \\
+\mbox{}echo\ -n\ \texttt{\textcolor{Red}{"{}Your\ program\ name:\ "{}}} \\
+\mbox{}\textbf{\textcolor{Blue}{read}}\ program$\_$name \\
+\mbox{}echo\ -n\ \texttt{\textcolor{Red}{"{}Begin\ Value:\ "{}}} \\
+\mbox{}\textbf{\textcolor{Blue}{read}}\ beginValue \\
+\mbox{}echo\ -n\ \texttt{\textcolor{Red}{"{}End\ Value:\ "{}}} \\
+\mbox{}\textbf{\textcolor{Blue}{read}}\ endValue \\
+\mbox{} \\
+\mbox{}echo\ \texttt{\textcolor{Red}{"{}"{}}} \\
+\mbox{}echo\ \texttt{\textcolor{Red}{"{}\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#"{}}} \\
+\mbox{}echo\ \texttt{\textcolor{Red}{"{}\ \ \ \ \ \ \ \ \ Testing\ starts...\ \ \ \ \ \ "{}}} \\
+\mbox{}echo\ \texttt{\textcolor{Red}{"{}"{}}} \\
+\mbox{} \\
+\mbox{}\textcolor{ForestGreen}{num}\textcolor{BrickRed}{=}\textcolor{Purple}{0}\textcolor{BrickRed}{;} \\
+\mbox{}\textbf{\textcolor{Blue}{for}}\ \textcolor{BrickRed}{((}\textcolor{ForestGreen}{N}\textcolor{BrickRed}{=}\textcolor{ForestGreen}{\$beginValue}\textcolor{BrickRed}{;}\ N\textcolor{BrickRed}{\textless{}=}\textcolor{ForestGreen}{\$endValue}\textcolor{BrickRed}{;}\ \textcolor{ForestGreen}{N}\textcolor{BrickRed}{=}N\textcolor{BrickRed}{*}\textcolor{Purple}{10}\textcolor{BrickRed}{))} \\
+\mbox{}\textbf{\textcolor{Blue}{do}} \\
+\mbox{}\ \ \ \ \ \ \ \ \textcolor{BrickRed}{((}num\textcolor{BrickRed}{++))} \\
+\mbox{}\ \ \ \ \ \ \ \ echo\ \texttt{\textcolor{Red}{"{}TEST\ CASE\ \$num"{}}} \\
+\mbox{}\ \ \ \ \ \ \ \ echo\ \texttt{\textcolor{Red}{"{}size:\ "{}}}\textcolor{ForestGreen}{\$N} \\
+\mbox{}\ \ \ \ \ \ \ \ echo\ -n\ \texttt{\textcolor{Red}{"{}My\ Cpp\ STL:\ "{}}} \\
+\mbox{}\ \ \ \ \ \ \ \ \textcolor{BrickRed}{(}time\ -p\ \textcolor{BrickRed}{./}\textcolor{ForestGreen}{\$program$\_$name}\ \textcolor{ForestGreen}{\$N}\textcolor{BrickRed}{)}\ \textcolor{Purple}{2}\textcolor{BrickRed}{\textgreater{}\&}\textcolor{Purple}{1}\ \textcolor{BrickRed}{$|$}\ grep\ real\ \textcolor{BrickRed}{$|$}\ sed\ \texttt{\textcolor{Red}{'s/real/TIME/'}} \\
+\mbox{}\ \ \ \ \ \ \ \ echo\ -n\ \texttt{\textcolor{Red}{"{}Offical\ Java\ STL:\ "{}}} \\
+\mbox{}\ \ \ \ \ \ \ \ \textcolor{BrickRed}{(}time\ -p\ java\ \textcolor{ForestGreen}{\$program$\_$name}\ \textcolor{ForestGreen}{\$N}\textcolor{BrickRed}{)}\ \textcolor{Purple}{2}\textcolor{BrickRed}{\textgreater{}\&}\textcolor{Purple}{1}\ \textcolor{BrickRed}{$|$}\ grep\ real\ \textcolor{BrickRed}{$|$}\ sed\ \texttt{\textcolor{Red}{'s/real/TIME/'}} \\
+\mbox{}\ \ \ \ \ \ \ \ echo\ \texttt{\textcolor{Red}{"{}"{}}} \\
+\mbox{}\textbf{\textcolor{Blue}{done}} \\
+\mbox{} \\
+\mbox{}echo\ \texttt{\textcolor{Red}{"{}\ \ \ \ \ \ \ \ \ All\ tests\ done.\ \ \ \ \ \ "{}}} \\
+\mbox{}echo\ \texttt{\textcolor{Red}{"{}\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#"{}}} \\
+\mbox{}echo\ \texttt{\textcolor{Red}{"{}"{}}} \\
+\mbox{}

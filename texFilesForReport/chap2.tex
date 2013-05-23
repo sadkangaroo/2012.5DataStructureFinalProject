@@ -1,0 +1,248 @@
+\chapter{Work Description}
+\section{Preparing}
+\begin{itemize}
+    \item 阅读任务文档，熟悉任务要求
+    \item 阅读JAVA文档及源码，选择了GNU CLASSPATH
+    \item 了解JAVA实现方法，幷研究如果运用在C++中会遇到什么困难
+\end{itemize}
+
+\section{Implementation}
+
+\subsection{ArrayList}
+如下的三段程序分别是ArrayList的成员变量，ArrayList::Iterator的成员变量，以及在空间不够时用来double space的ensureCapacity函数。
+
+
+\begin{center}\begin{minipage}{120mm}
+\noindent
+\mbox{}\textbf{\textcolor{Blue}{class}}\ \textcolor{TealBlue}{ArrayList}\ \textcolor{Red}{\{} \\
+\mbox{}\ \ \ \ \textbf{\textcolor{Blue}{private}}\textcolor{BrickRed}{:} \\
+\mbox{}\ \ \ \ \textbf{\textcolor{Blue}{static}}\ \textbf{\textcolor{Blue}{const}}\ \textcolor{ForestGreen}{int}\ DEFAULT$\_$CAPACITY\ \textcolor{BrickRed}{=}\ \textcolor{Purple}{10}\textcolor{BrickRed}{;} \\
+\mbox{}\ \ \ \ \textcolor{ForestGreen}{int}\ sz\textcolor{BrickRed}{,}\ cap\textcolor{BrickRed}{;} \\
+\mbox{}\ \ \ \ E\textcolor{BrickRed}{*}\ data\textcolor{BrickRed}{;} 
+\end{minipage}\end{center}
+
+\begin{center}\begin{minipage}{120mm}
+\noindent
+\mbox{}\textbf{\textcolor{Blue}{class}}\ \textcolor{TealBlue}{Iterator}\ \textcolor{Red}{\{} \\
+\mbox{}\ \ \ \ \textbf{\textcolor{Blue}{private}}\textcolor{BrickRed}{:} \\
+\mbox{}\ \ \ \ \textcolor{ForestGreen}{int}\ pos\textcolor{BrickRed}{,}\ size\textcolor{BrickRed}{,}\ last\textcolor{BrickRed}{;} \\
+\mbox{}\ \ \ \ ArrayList\textcolor{BrickRed}{*}\ arr\textcolor{BrickRed}{;}
+\end{minipage}\end{center}
+
+\begin{center}\begin{minipage}{120mm}
+\noindent
+\mbox{}\textcolor{ForestGreen}{void}\ \textbf{\textcolor{Black}{ensureCapacity}}\textcolor{BrickRed}{(}\textcolor{ForestGreen}{int}\ minCapacity\textcolor{BrickRed}{)}\ \textcolor{Red}{\{}\  \\
+\mbox{}\ \ \ \ \textbf{\textcolor{Blue}{if}}\ \textcolor{BrickRed}{(}minCapacity\ \textcolor{BrickRed}{\textgreater{}}\ cap\textcolor{BrickRed}{)}\ \textcolor{Red}{\{} \\
+\mbox{}\ \ \ \ \ \ \ \ E\textcolor{BrickRed}{*}\ newData\ \textcolor{BrickRed}{=}\ \textbf{\textcolor{Blue}{new}}\ E\textcolor{BrickRed}{[}cap\ \textcolor{BrickRed}{=}\ \textbf{\textcolor{Black}{getMax}}\textcolor{BrickRed}{(}cap\ \textcolor{BrickRed}{*}\ \textcolor{Purple}{2}\textcolor{BrickRed}{,}\ minCapacity\textcolor{BrickRed}{)];} \\
+\mbox{}\ \ \ \ \ \ \ \ \textbf{\textcolor{Black}{memmove}}\textcolor{BrickRed}{(}newData\textcolor{BrickRed}{,}\ data\textcolor{BrickRed}{,}\ sz\ \textcolor{BrickRed}{*}\ \textbf{\textcolor{Blue}{sizeof}}\textcolor{BrickRed}{(}E\textcolor{BrickRed}{));} \\
+\mbox{} \ \ \ \ \ \ \ \textbf{\textcolor{Blue}{delete}}\ \textcolor{BrickRed}{[]}\ data\textcolor{BrickRed}{;} \\
+\mbox{}\ \ \ \ \ \ \ \ data\ \textcolor{BrickRed}{=}\ newData\textcolor{BrickRed}{;} \\
+\mbox{}\ \ \ \ \textcolor{Red}{\}} \\
+\mbox{}\textcolor{Red}{\}}
+\end{minipage}\end{center}
+
+\subsection{LinkedList}
+如下程序是linkedList的成员函数。
+
+
+\begin{center}\begin{minipage}{120mm}
+\noindent
+\mbox{}\textbf{\textcolor{Blue}{class}}\ \textcolor{TealBlue}{LinkedList}\ \textcolor{Red}{\{} \\
+\mbox{}\ \ \ \ \textbf{\textcolor{Blue}{private}}\textcolor{BrickRed}{:} \\
+\mbox{}\ \ \ \ \textbf{\textcolor{Blue}{class}}\ \textcolor{TealBlue}{Entry}\ \textcolor{Red}{\{} \\
+\mbox{}\ \ \ \ \ \ \ \ \textbf{\textcolor{Blue}{public}}\textcolor{BrickRed}{:} \\
+\mbox{}\ \ \ \ \ \ \ \ \textcolor{TealBlue}{T}\ data\textcolor{BrickRed}{;} \\
+\mbox{}\ \ \ \ \ \ \ \ \textcolor{TealBlue}{Entry}\ \textcolor{BrickRed}{*}next\textcolor{BrickRed}{,}\ \textcolor{BrickRed}{*}previous\textcolor{BrickRed}{;} \\
+\mbox{}\ \ \ \ \ \ \ \ \textbf{\textcolor{Black}{Entry}}\textcolor{BrickRed}{()}\ \textcolor{Red}{\{\}} \\
+\mbox{}\ \ \ \ \ \ \ \ \textbf{\textcolor{Black}{Entry}}\textcolor{BrickRed}{(}\textcolor{TealBlue}{T}\ $\_$data\textcolor{BrickRed}{)}\ \textcolor{Red}{\{} \\
+\mbox{}\ \ \ \ \ \ \ \ \ \ \ \ data\ \textcolor{BrickRed}{=}\ $\_$data\textcolor{BrickRed}{;} \\
+\mbox{}\ \ \ \ \ \ \ \ \ \ \ \ next\ \textcolor{BrickRed}{=}\ previous\ \textcolor{BrickRed}{=}\ NULL\textcolor{BrickRed}{;} \\
+\mbox{}\ \ \ \ \ \ \ \ \textcolor{Red}{\}} \\
+\mbox{}\ \ \ \ \textcolor{Red}{\}}\textcolor{BrickRed}{;} \\
+\mbox{}\ \ \ \ \textcolor{TealBlue}{Entry}\ \textcolor{BrickRed}{*}first\textcolor{BrickRed}{,}\ \textcolor{BrickRed}{*}last\textcolor{BrickRed}{;} \\
+\mbox{}\ \ \ \ \textcolor{ForestGreen}{int}\ sz\textcolor{BrickRed}{;} 
+\end{minipage}\end{center}
+
+\subsection{HashMap}
+HashMap采用拉链的hash表实现，有一个叫做loadFactor的参数，以及叫做threshold的值，threshold表示当size达到threshold的时候就需要double space扩大hash表的capcity，而threshold等于capcity乘以loadFactor, 在本程序中，loadFactor设为0.75，这也是Java在某个版本后一直沿用的Default LoadFactor。
+
+
+\begin{center}\begin{minipage}{120mm}
+\noindent
+\mbox{}\textbf{\textcolor{Blue}{class}}\ \textcolor{TealBlue}{HashMap}\ \textcolor{Red}{\{} \\
+\mbox{}\ \ \ \ \textbf{\textcolor{Blue}{public}}\textcolor{BrickRed}{:} \\
+\mbox{}\ \ \ \ \textbf{\textcolor{Blue}{static}}\ \textbf{\textcolor{Blue}{const}}\ \textcolor{ForestGreen}{int}\ DEFAULT$\_$CAPCITY\ \textcolor{BrickRed}{=}\ \textcolor{Purple}{11}\textcolor{BrickRed}{;} \\
+\mbox{}\ \ \ \ \textbf{\textcolor{Blue}{static}}\ \textbf{\textcolor{Blue}{const}}\ \textcolor{ForestGreen}{double}\ DEFAULT$\_$LOAD$\_$FACTOR\ \textcolor{BrickRed}{=}\ \textcolor{Purple}{0.75}\textcolor{BrickRed}{;} \\
+\mbox{}\ \ \ \ \textbf{\textcolor{Blue}{private}}\textcolor{BrickRed}{:} \\
+\mbox{}\ \ \ \ \textbf{\textcolor{Blue}{template}}\ \textcolor{BrickRed}{\textless{}}\textbf{\textcolor{Blue}{class}}\ \textcolor{TealBlue}{K2}\textcolor{BrickRed}{,}\ \textbf{\textcolor{Blue}{class}}\ \textcolor{TealBlue}{V2}\textcolor{BrickRed}{\textgreater{}} \\
+\mbox{}\ \ \ \ \textbf{\textcolor{Blue}{class}}\ \textcolor{TealBlue}{HashEntry}\textcolor{BrickRed}{:}\ \textbf{\textcolor{Blue}{public}}\ Entry\textcolor{BrickRed}{\textless{}}K2\textcolor{BrickRed}{,}\ V2\textcolor{BrickRed}{\textgreater{}}\ \textcolor{Red}{\{} \\
+\mbox{}\ \ \ \ \ \ \ \ \textbf{\textcolor{Blue}{public}}\textcolor{BrickRed}{:} \\
+\mbox{}\ \ \ \ \ \ \ \ HashEntry\textcolor{BrickRed}{\textless{}}K2\textcolor{BrickRed}{,}\ V2\textcolor{BrickRed}{\textgreater{}*}\ next\textcolor{BrickRed}{;} \\
+\mbox{}\ \ \ \ \ \ \ \ \textbf{\textcolor{Black}{HashEntry}}\textcolor{BrickRed}{()}\ \textcolor{Red}{\{\}} \\
+\mbox{}\ \ \ \ \ \ \ \ \textbf{\textcolor{Black}{HashEntry}}\textcolor{BrickRed}{(}\textcolor{TealBlue}{K2}\ $\_$key\textcolor{BrickRed}{,}\ \textcolor{TealBlue}{V2}\ $\_$value\textcolor{BrickRed}{):}\ Entry\textcolor{BrickRed}{\textless{}}K2\textcolor{BrickRed}{,}\ V2\textcolor{BrickRed}{\textgreater{}(}$\_$key\textcolor{BrickRed}{,}\ $\_$value\textcolor{BrickRed}{)}\ \textcolor{Red}{\{\}} \\
+\mbox{}\ \ \ \ \textcolor{Red}{\}}\textcolor{BrickRed}{;} \\
+\mbox{}\ \ \ \ \textcolor{ForestGreen}{int}\ threshold\textcolor{BrickRed}{,}\ cap\textcolor{BrickRed}{;} \\
+\mbox{}\ \ \ \ \textcolor{ForestGreen}{double}\ loadFactor\textcolor{BrickRed}{;} \\
+\mbox{}\ \ \ \ HashEntry\textcolor{BrickRed}{\textless{}}K\textcolor{BrickRed}{,}\ V\textcolor{BrickRed}{\textgreater{}**}\ buckets\textcolor{BrickRed}{;} \\
+\mbox{}\ \ \ \ \textcolor{ForestGreen}{int}\ sz\textcolor{BrickRed}{;}
+\end{minipage}\end{center}
+
+\begin{center}\begin{minipage}{120mm}
+\noindent
+\mbox{}\textcolor{TealBlue}{V}\ \textbf{\textcolor{Black}{put}}\textcolor{BrickRed}{(}\textbf{\textcolor{Blue}{const}}\ K\textcolor{BrickRed}{\&}\ key\textcolor{BrickRed}{,}\ \textbf{\textcolor{Blue}{const}}\ V\textcolor{BrickRed}{\&}\ value\textcolor{BrickRed}{)}\ \textcolor{Red}{\{} \\
+\mbox{}\ \ \ \ \textbf{\textcolor{Blue}{if}}\ \textcolor{BrickRed}{(++}sz\ \textcolor{BrickRed}{\textgreater{}}\ threshold\textcolor{BrickRed}{)}\ \textcolor{Red}{\{} \\
+\mbox{}\ \ \ \ \ \ \ \ \textbf{\textcolor{Black}{rehash}}\textcolor{BrickRed}{();} \\
+\mbox{}\ \ \ \ \ \ \ \ idx\ \textcolor{BrickRed}{=}\ \textbf{\textcolor{Black}{hash}}\textcolor{BrickRed}{(}key\textcolor{BrickRed}{);} \\
+\mbox{}\ \ \ \ \textcolor{Red}{\}} \\
+\end{minipage}\end{center}
+
+\begin{center}\begin{minipage}{120mm}
+\noindent
+\mbox{}\textcolor{ForestGreen}{void}\ \textbf{\textcolor{Black}{rehash}}\textcolor{BrickRed}{()}\ \textcolor{Red}{\{} \\
+\mbox{}\ \ \ \ cap\ \textcolor{BrickRed}{=}\ cap\ \textcolor{BrickRed}{*}\ \textcolor{Purple}{2}\ \textcolor{BrickRed}{+}\ \textcolor{Purple}{1}\textcolor{BrickRed}{;} \\
+\mbox{}\ \ \ \ threshold\ \textcolor{BrickRed}{=}\ \textcolor{BrickRed}{(}\textcolor{ForestGreen}{int}\textcolor{BrickRed}{)(}cap\ \textcolor{BrickRed}{*}\ loadFactor\textcolor{BrickRed}{);} \\
+\end{minipage}\end{center}
+
+\subsection{HashSet}
+HashSet内部直接调用HashMap, 即HashSet可以看作是value为空的HashMap。
+
+
+\begin{center}\begin{minipage}{120mm}
+\noindent
+\mbox{}\ \ \ \ \textbf{\textcolor{Blue}{class}}\ \textcolor{TealBlue}{HashSet}\ \textcolor{Red}{\{} \\
+\mbox{}\ \ \ \ \ \ \ \ \textbf{\textcolor{Blue}{private}}\textcolor{BrickRed}{:} \\
+\mbox{}\ \ \ \ \ \ \ \ HashMap\textcolor{BrickRed}{\textless{}}T\textcolor{BrickRed}{,}\ \textcolor{ForestGreen}{bool}\textcolor{BrickRed}{,}\ H\textcolor{BrickRed}{\textgreater{}*}\ map\textcolor{BrickRed}{;} \\
+\mbox{} \\
+\mbox{}\ \ \ \ \textbf{\textcolor{Blue}{class}}\ \textcolor{TealBlue}{Iterator}\ \textcolor{Red}{\{} \\
+\mbox{}\ \ \ \ \ \ \ \ \textbf{\textcolor{Blue}{public}}\textcolor{BrickRed}{:} \\
+\mbox{}\ \ \ \ \ \ \ \ \textbf{\textcolor{Blue}{typename}}\ \textcolor{TealBlue}{HashMap}\textcolor{BrickRed}{\textless{}}T\textcolor{BrickRed}{,}\ \textcolor{ForestGreen}{bool}\textcolor{BrickRed}{,}\ H\textcolor{BrickRed}{\textgreater{}::}\textcolor{TealBlue}{Iterator}\ mItr\textcolor{BrickRed}{;} 
+\end{minipage}\end{center}
+
+\subsection{TreeMap}
+TreeMap我借鉴了C++和Java的STL，采用红黑树实现，但这也是这次作业碰到的比较大的困难之一。
+
+\begin{center}\begin{minipage}{120mm}
+\noindent
+\mbox{}\textbf{\textcolor{Blue}{class}}\ \textcolor{TealBlue}{TreeMap}\ \textcolor{Red}{\{} \\
+\mbox{}\ \ \ \ \textbf{\textcolor{Blue}{private}}\textcolor{BrickRed}{:} \\
+\mbox{}\ \ \ \ \textbf{\textcolor{Blue}{static}}\ \textbf{\textcolor{Blue}{const}}\ \textcolor{ForestGreen}{int}\ RED\ \textcolor{BrickRed}{=}\ \textcolor{BrickRed}{-}\textcolor{Purple}{1}\textcolor{BrickRed}{,}\ BLACK\ \textcolor{BrickRed}{=}\ \textcolor{Purple}{1}\textcolor{BrickRed}{;}\  \\
+\mbox{}\ \ \ \ \textbf{\textcolor{Blue}{template}}\ \textcolor{BrickRed}{\textless{}}\textbf{\textcolor{Blue}{class}}\ \textcolor{TealBlue}{K2}\textcolor{BrickRed}{,}\ \textbf{\textcolor{Blue}{class}}\ \textcolor{TealBlue}{V2}\textcolor{BrickRed}{\textgreater{}} \\
+\mbox{}\ \ \ \ \textbf{\textcolor{Blue}{class}}\ \textcolor{TealBlue}{Node}\textcolor{BrickRed}{:}\ \textbf{\textcolor{Blue}{public}}\ Entry\textcolor{BrickRed}{\textless{}}K2\textcolor{BrickRed}{,}\ V2\textcolor{BrickRed}{\textgreater{}}\ \textcolor{Red}{\{} \\
+\mbox{}\ \ \ \ \ \ \ \ \textbf{\textcolor{Blue}{public}}\textcolor{BrickRed}{:} \\
+\mbox{}\ \ \ \ \ \ \ \ \textcolor{ForestGreen}{int}\ color\textcolor{BrickRed}{;} \\
+\mbox{}\ \ \ \ \ \ \ \ \textcolor{TealBlue}{Node\textless{}K2,\ V2\textgreater{}}\ \textcolor{BrickRed}{*}left\textcolor{BrickRed}{,}\ \textcolor{BrickRed}{*}right\textcolor{BrickRed}{,}\ \textcolor{BrickRed}{*}parent\textcolor{BrickRed}{;} \\
+\mbox{}\ \ \ \ \ \ \ \ \textbf{\textcolor{Black}{Node}}\textcolor{BrickRed}{():}\ Entry\textcolor{BrickRed}{\textless{}}K2\textcolor{BrickRed}{,}\ V2\textcolor{BrickRed}{\textgreater{}(}\textbf{\textcolor{Black}{K}}\textcolor{BrickRed}{(),}\ \textbf{\textcolor{Black}{V}}\textcolor{BrickRed}{())}\ \textcolor{Red}{\{} \\
+\mbox{}\ \ \ \ \ \ \ \ \ \ \ \ color\ \textcolor{BrickRed}{=}\ BLACK\textcolor{BrickRed}{;} \\
+\mbox{}\ \ \ \ \ \ \ \ \ \ \ \ left\ \textcolor{BrickRed}{=}\ right\ \textcolor{BrickRed}{=}\ parent\ \textcolor{BrickRed}{=}\ \textbf{\textcolor{Blue}{this}}\textcolor{BrickRed}{;} \\
+\mbox{}\ \ \ \ \ \ \ \ \textcolor{Red}{\}} \\
+\mbox{}\ \ \ \ \ \ \ \ \textbf{\textcolor{Black}{Node}}\textcolor{BrickRed}{(}\textcolor{TealBlue}{K2}\ $\_$key\textcolor{BrickRed}{,}\ \textcolor{TealBlue}{V2}\ $\_$value\textcolor{BrickRed}{,}\ \textcolor{ForestGreen}{int}\ $\_$color\textcolor{BrickRed}{,}\ Node\textcolor{BrickRed}{\textless{}}K2\textcolor{BrickRed}{,}\ V2\textcolor{BrickRed}{\textgreater{}*}\ $\_$left\textcolor{BrickRed}{,}\  \\
+\mbox{}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Node\textcolor{BrickRed}{\textless{}}K2\textcolor{BrickRed}{,}\ V2\textcolor{BrickRed}{\textgreater{}*}\ $\_$right\textcolor{BrickRed}{,}\ Node\textcolor{BrickRed}{\textless{}}K2\textcolor{BrickRed}{,}\ V2\textcolor{BrickRed}{\textgreater{}*}\ $\_$parent\textcolor{BrickRed}{):}\  \\
+\mbox{}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Entry\textcolor{BrickRed}{\textless{}}K2\textcolor{BrickRed}{,}\ V2\textcolor{BrickRed}{\textgreater{}(}$\_$key\textcolor{BrickRed}{,}\ $\_$value\textcolor{BrickRed}{)}\  \\
+\mbox{}\ \ \ \ \ \ \ \ \textcolor{Red}{\{} \\
+\mbox{}\ \ \ \ \ \ \ \ \ \ \ color\ \textcolor{BrickRed}{=}\ $\_$color\textcolor{BrickRed}{;}\  \\
+\mbox{}\ \ \ \ \ \ \ \ \ \ \ left\ \textcolor{BrickRed}{=}\ $\_$left\textcolor{BrickRed}{;}\ right\ \textcolor{BrickRed}{=}\ $\_$right\textcolor{BrickRed}{;}\ parent\ \textcolor{BrickRed}{=}\ $\_$parent\textcolor{BrickRed}{;} \\
+\mbox{}\ \ \ \ \ \ \ \ \textcolor{Red}{\}} \\
+\mbox{}\ \ \ \ \textcolor{Red}{\}}\textcolor{BrickRed}{;} \\
+\mbox{}\ \ \ \ \textcolor{TealBlue}{Node\textless{}K,\ V\textgreater{}}\ \textcolor{BrickRed}{*}nil\textcolor{BrickRed}{,}\ \textcolor{BrickRed}{*}root\textcolor{BrickRed}{;}\ \textcolor{ForestGreen}{int}\ sz\textcolor{BrickRed}{;} 
+\end{minipage}\end{center}
+
+
+\begin{center}\begin{minipage}{120mm}
+\noindent
+\mbox{}\textbf{\textcolor{Blue}{class}}\ \textcolor{TealBlue}{TreeMap}\ \textcolor{Red}{\{} \\
+\mbox{}\ \ \ \ \textbf{\textcolor{Blue}{private}}\textcolor{BrickRed}{:} \\
+\mbox{}\ \ \ \ \ \ \ \ \textcolor{ForestGreen}{void}\ \textbf{\textcolor{Black}{rotateLeft}}\textcolor{BrickRed}{(}Node\textcolor{BrickRed}{\textless{}}K\textcolor{BrickRed}{,}\ V\textcolor{BrickRed}{\textgreater{}*}\ node\textcolor{BrickRed}{);} \\
+\mbox{}\ \ \ \ \ \ \ \ \textcolor{ForestGreen}{void}\ \textbf{\textcolor{Black}{rotateRight}}\textcolor{BrickRed}{(}Node\textcolor{BrickRed}{\textless{}}K\textcolor{BrickRed}{,}\ V\textcolor{BrickRed}{\textgreater{}*}\ node\textcolor{BrickRed}{);} \\
+\mbox{}\ \ \ \ \ \ \ \ \textcolor{ForestGreen}{void}\ \textbf{\textcolor{Black}{insertFixup}}\textcolor{BrickRed}{(}Node\textcolor{BrickRed}{\textless{}}K\textcolor{BrickRed}{,}\ V\textcolor{BrickRed}{\textgreater{}*}\ node\textcolor{BrickRed}{);} \\
+\mbox{}\ \ \ \ \ \ \ \ \textcolor{ForestGreen}{void}\ \textbf{\textcolor{Black}{deleteFixup}}\textcolor{BrickRed}{(}\textcolor{TealBlue}{Node\textless{}K,\ V\textgreater{}*\ node,\ Node\textless{}K,\ V\textgreater{}}\ \textcolor{BrickRed}{*}parent\textcolor{BrickRed}{);} \\
+\mbox{}\ \ \ \ \ \ \ \ \textcolor{ForestGreen}{void}\ \textbf{\textcolor{Black}{removeNode}}\textcolor{BrickRed}{(}Node\textcolor{BrickRed}{\textless{}}K\textcolor{BrickRed}{,}\ V\textcolor{BrickRed}{\textgreater{}*}\ node\textcolor{BrickRed}{);} \\
+\mbox{}\ \ \ \ \ \ \ \ Node\textcolor{BrickRed}{\textless{}}K\textcolor{BrickRed}{,}\ V\textcolor{BrickRed}{\textgreater{}*}\ \textbf{\textcolor{Black}{getNode}}\textcolor{BrickRed}{(}\textcolor{TealBlue}{K}\ key\textcolor{BrickRed}{);} \\
+\mbox{}\ \ \ \ \ \ \ \ Node\textcolor{BrickRed}{\textless{}}K\textcolor{BrickRed}{,}\ V\textcolor{BrickRed}{\textgreater{}*}\ \textbf{\textcolor{Black}{successor}}\textcolor{BrickRed}{(}Node\textcolor{BrickRed}{\textless{}}K\textcolor{BrickRed}{,}\ V\textcolor{BrickRed}{\textgreater{}*}\ node\textcolor{BrickRed}{);} 
+\end{minipage}\end{center}
+
+\subsection{TreeSet}
+正如Hashset与HashMap的关系，TreeSet也内部直接调用了TreeMap來实现。
+
+\begin{center}\begin{minipage}{120mm}
+\noindent
+\mbox{}\textbf{\textcolor{Blue}{class}}\ \textcolor{TealBlue}{TreeSet}\ \textcolor{Red}{\{} \\
+\mbox{}\ \ \ \ \textbf{\textcolor{Blue}{private}}\textcolor{BrickRed}{:} \\
+\mbox{}\ \ \ \ \ \ \ \ TreeMap\textcolor{BrickRed}{\textless{}}E\textcolor{BrickRed}{,}\ \textcolor{ForestGreen}{bool}\textcolor{BrickRed}{\textgreater{}*}\ map\textcolor{BrickRed}{;} \\
+\mbox{} \\
+\mbox{}\textbf{\textcolor{Blue}{class}}\ \textcolor{TealBlue}{Iterator}\ \textcolor{Red}{\{} \\
+\mbox{}\ \ \ \ \textbf{\textcolor{Blue}{public}}\textcolor{BrickRed}{:} \\
+\mbox{}\ \ \ \ \textbf{\textcolor{Blue}{typename}}\ \textcolor{TealBlue}{TreeMap}\textcolor{BrickRed}{\textless{}}E\textcolor{BrickRed}{,}\ \textcolor{ForestGreen}{bool}\textcolor{BrickRed}{\textgreater{}::}\textcolor{TealBlue}{Iterator}\ mItr\textcolor{BrickRed}{;}
+\end{minipage}\end{center}
+
+\section{Testing Results}
+
+\subsection{Script}
+作业写完了，如何检验质量呢。除了正确性，效率也是一个很关键的方面。既然是实现Java的STL，不妨就和Java的STL进行对比。由于Set和Map的相似性，只测试了ArrayList, LinkedList, HashSet, TreeSet四个程序。为了避免Java读入过慢导致影响测试，采用main读入规模的方法來进行测试。四组程序分别测试数据范围由小到大的五个点。测试用的bash脚本及4组主程序见附录。
+
+\subsection{Tables}
+
+\subsubsection{ArrayList}
+
+观察下表会发现，Cpp随着规模增长，用时也稳步增长，但Java虽然固有速度很慢，但在数据规模达到$10^9$时，却是“惊人的”快了。
+
+\begin{center}
+\rowcolors{1}{RoyalBlue!20}{RoyalBlue!5}
+\begin{tabular}{ccccc}
+Test Case&Data Size&My Cpp STL & Official Java STL\\
+1&$10^5$&0.06&0.86\\
+2&$10^6$&0.03&0.10\\
+3&$10^7$&0.30&1.12\\
+4&$10^8$&3.21&23.80\\
+5&$10^9$&29.07&39.04\\ 
+\end{tabular}
+\end{center}
+
+\newpage
+
+\subsubsection{LinkedList}
+
+从下表可以看出，Cpp的用时增长和ArrayList一样十分稳定，但这回Java相反，当如据规模到达$10^8$时确实惊人的慢了。
+
+\begin{center}
+\rowcolors{1}{RoyalBlue!20}{RoyalBlue!5}
+\begin{tabular}{ccccc}
+Test Case&Data Size&My Cpp STL & Official Java STL\\
+1&$10^4$&0.02&0.11\\
+2&$10^5$&0.02&0.07\\
+3&$10^6$&0.07&0.13\\
+4&$10^7$&0.65&0.97\\
+5&$10^8$&6.28&24.72\\ 
+\end{tabular}
+\end{center}
+
+\subsubsection{HashSet}
+
+这次有个明显的特点，当数据范围还不是很大时，Java和Cpp的速度是相差无几的。
+
+\begin{center}
+\rowcolors{1}{RoyalBlue!20}{RoyalBlue!5}
+\begin{tabular}{ccccc}
+Test Case&Data Size&My Cpp STL & Official Java STL\\
+1&$10^4$&0.01&0.09\\
+2&$10^5$&0.02&0.11\\
+3&$10^6$&0.16&0.18\\
+4&$10^7$&1.46&1.10\\
+5&$10^8$&14.77&40.58\\ 
+\end{tabular}
+\end{center}
+
+\subsubsection{TreeSet}
+
+也许是因为我第一次写红黑树，所以效率不高吧，快要跑不过Java了。
+
+\begin{center}
+\rowcolors{1}{RoyalBlue!20}{RoyalBlue!5}
+\begin{tabular}{ccccc}
+Test Case&Data Size&My Cpp STL & Official Java STL\\
+1&$10^3$&0.00&0.09\\
+2&$10^4$&0.01&0.09\\
+3&$10^5$&0.09&0.12\\
+4&$10^6$&1.25&0.92\\
+5&$10^7$&18.92&18.99\\ 
+\end{tabular}
+\end{center}
